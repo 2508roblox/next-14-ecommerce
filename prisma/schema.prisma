@@ -8,12 +8,12 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
-model Store {
-  id        String      @id @default(uuid())
-  name     String   @db.VarChar(255)
-  userId   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id Int @id @default(autoincrement())
+  name String? @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String  @db.VarChar(255)
 }
  
